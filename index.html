@@ -3,34 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - แฟ้มสะสมผลงาน</title>
+    <title>Portfolio - พีรภัทร พยุงกลาง</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Reset & Variables */
+        /* Reset & Variables */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Sukhumvit Tadmai', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Kanit', sans-serif;
+            scroll-behavior: smooth;
         }
 
         :root {
-            --primary-color: #2563eb;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #1e293b;
-            --text-muted: #64748b;
+            --bg-main: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --accent: #60a5fa;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-main);
+            color: var(--text-main);
             line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+            min-height: 100vh;
         }
 
         /* Navigation */
         nav {
-            background-color: var(--card-bg);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
             position: fixed;
             width: 100%;
             top: 0;
@@ -43,37 +59,42 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
         }
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s;
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--primary-color);
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
         }
 
-        /* Container General */
+        /* Container */
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 5rem 2rem 2rem;
+            padding: 6rem 2rem 2rem;
         }
 
         section {
@@ -82,18 +103,19 @@
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2.5rem;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
             position: relative;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 50px;
+            width: 60px;
             height: 4px;
-            background-color: var(--primary-color);
-            margin: 0.5rem auto 0;
+            background: linear-gradient(90deg, var(--primary), #a78bfa);
+            margin: 0.6rem auto 0;
             border-radius: 2px;
         }
 
@@ -102,81 +124,224 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 2rem;
+            gap: 3rem;
             min-height: 70vh;
         }
 
-        .hero-text h1 {
-            font-size: 2.8rem;
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text .greeting {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 500;
             margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(180deg, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-text h2 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .hero-text p {
+            font-size: 1.3rem;
             color: var(--text-muted);
-            max-width: 500px;
-            margin-bottom: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
         }
 
-        /* Profile Image Style */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary), #2563eb);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+
+        /* Profile Image */
+        .profile-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .profile-img {
-            width: 250px;
-            height: 250px;
+            width: 260px;
+            height: 260px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--primary-color);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px var(--primary-glow);
+            animation: float 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         /* Skills Section */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.2rem;
             justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .skill-tag {
-            background-color: var(--card-bg);
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 1.6rem;
+            border-radius: 12px;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+            color: var(--accent);
+        }
+
+        /* Interests Section */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .interest-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .interest-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(96, 165, 250, 0.15);
+        }
+
+        .interest-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .interest-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
             font-weight: 500;
         }
 
         /* Contact Section */
-        .contact-info {
-            text-align: center;
-            color: var(--text-muted);
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .contact-info p {
-            margin-bottom: 0.5rem;
+        .contact-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            padding: 1.8rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .contact-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-main);
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
-            background-color: var(--card-bg);
-            margin-top: 4rem;
-            border-top: 1px solid #e2e8f0;
+            padding: 2.5rem;
+            background: rgba(15, 23, 42, 0.9);
+            margin-top: 5rem;
+            border-top: 1px solid var(--border-color);
             color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column-reverse;
                 text-align: center;
+                gap: 2rem;
             }
-            .hero-text p {
-                margin: 0 auto 1.5rem;
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
             }
         }
     </style>
@@ -186,10 +351,11 @@
     <!-- Header Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">MyPortfolio</div>
+            <div class="logo">PORTFOLIO</div>
             <ul class="nav-links">
                 <li><a href="#about">เกี่ยวกับฉัน</a></li>
                 <li><a href="#skills">ทักษะ</a></li>
+                <li><a href="#interests">สิ่งที่ชอบ</a></li>
                 <li><a href="#contact">ติดต่อ</a></li>
             </ul>
         </div>
@@ -199,34 +365,69 @@
         <!-- Hero Section / About -->
         <section id="about" class="hero">
             <div class="hero-text">
-                <h1>สวัสดีครับ, ผม นายพีรภัทร พยุงกลาง</h1>
+                <p class="greeting">ยินดีต้อนรับสู่พอร์ตโฟลิโอของผม</p>
+                <h1>นายพีรภัทร พยุงกลาง</h1>
                 <h2>นักศึกษาสาขาเทคโนโลยีสารสนเทศ</h2>
+                <a href="#contact" class="btn">ติดต่องาน / สอบถามเพิ่มเติม</a>
             </div>
-            <!-- ใส่รูปภาพโปรไฟล์ตรงนี้ -->
-            <img src="555.jfif" alt="นายพีรภัทร พยุงกลาง" class="profile-img">
+            <div class="profile-wrapper">
+                <img src="555.jfif" alt="นายพีรภัทร พยุงกลาง" class="profile-img">
+            </div>
         </section>
 
         <!-- Skills Section -->
         <section id="skills">
             <h2 class="section-title">ทักษะและความสามารถ</h2>
             <div class="skills-container">
-                <div class="skill-tag">HTML / CSS</div>
+                <div class="skill-tag">🌐 HTML / CSS</div>
+                <div class="skill-tag">📟 IoT / ESP32</div>
+            </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section id="interests">
+            <h2 class="section-title">สิ่งที่ชอบ & งานอดิเรก</h2>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <span class="icon">🎵</span>
+                    <h3>ฟังเพลง</h3>
+                </div>
+                <div class="interest-card">
+                    <span class="icon">🎮</span>
+                    <h3>เล่นเกม</h3>
+                </div>
+                <div class="interest-card">
+                    <span class="icon">🍜</span>
+                    <h3>ทานก๋วยเตี๋ยว</h3>
+                </div>
+                <div class="interest-card">
+                    <span class="icon">🐶🐱</span>
+                    <h3>สุนัขและแมว</h3>
+                </div>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact">
-            <h2 class="section-title">ติดต่อฉัน</h2>
-            <div class="contact-info">
-                <p>📧 อีเมล: peerapath.005@gmail.com</p>
-                <p>📱 เบอร์โทรศัพท์: 0928175301</p>
+            <h2 class="section-title">ช่องทางการติดต่อ</h2>
+            <div class="contact-cards">
+                <a href="mailto:peerapath.005@gmail.com" class="contact-card">
+                    <span class="icon">📧</span>
+                    <h3>อีเมล</h3>
+                    <p>peerapath.005@gmail.com</p>
+                </a>
+                <a href="tel:0928175301" class="contact-card">
+                    <span class="icon">📱</span>
+                    <h3>เบอร์โทรศัพท์</h3>
+                    <p>092-817-5301</p>
+                </a>
             </div>
         </section>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 My Portfolio. All rights reserved.</p>
+        <p>&copy; 2026 Peerapat Phayungklang. All rights reserved.</p>
     </footer>
 
 </body>
